@@ -40,8 +40,8 @@ const MORSE_TABLE = {
 function decode(expr) {
     let words = [];
     while (expr) {
-        words.push(expr.slice(0, 10))
-        expr = expr.slice(10)
+        words.push(expr.slice(0, 10));
+        expr = expr.slice(10);
     }
     for (let word of words) {
         let letter = word.replace(/00/g, '').replace(/10/g, '.').replace(/11/g, '-');
