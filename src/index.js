@@ -34,11 +34,20 @@ const MORSE_TABLE = {
     '--...':  '7',
     '---..':  '8',
     '----.':  '9',
-    '-----':  '0',
+    '-----':  '0'
 };
 
 function decode(expr) {
-    // write your solution here
+    let words = [];
+    while (expr) {
+        words.push(expr.slice(0, 10))
+        expr = expr.slice(10)
+    }
+    for (let word of words) {
+        let letter = word.replace(/00/g, '').replace(/10/g, '.').replace(/11/g, '-');
+        words.splice(words.indexOf(word), 1, MORSE_TABLE[letter] || ' ');
+    }
+    return words.join('');
 }
 
 module.exports = {
